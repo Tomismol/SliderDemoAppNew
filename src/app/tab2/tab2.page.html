@@ -1,0 +1,46 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons start>
+      <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    </ion-buttons>
+    <ion-title>Custom places</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="bg-image no-scroll" padding>
+
+  <p>List of your current places:</p>
+
+  <ion-list>
+
+    <ion-item class="transparent" *ngFor="let item of items | async">
+      <div class="row ">
+        <div class="col ">
+         <input type="text" #updatetext [value]="item.myObj.Name" /> 
+        </div>  
+        <div class="col">
+      <input type="text" #updateval [value]="item.myObj.Zone" /> 
+        </div>
+        <div class="col">
+      <button routerLink="updateItem(item.key, updatetext.value, updateval.value)">Update</button>
+      <button routerLink="deleteItem(item.key)">Delete</button>
+    </div>
+    </div>
+    </ion-item>
+    
+  </ion-list>
+  
+  <div class="col transparentbox">
+  <ion-label class="white">Location</ion-label>
+  <input type="text" #newitem />
+  <ion-label class="white">Time zone (GMT)</ion-label> 
+  <input type="number" #newnum />
+  <button routerLink="addItem(newitem.value, newnum.value)">Add</button>
+  <button routerLink="deleteEverything()">Delete All</button> 
+</div>
+  
+
+</ion-content>
+

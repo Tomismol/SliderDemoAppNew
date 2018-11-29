@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons start>
+      <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    </ion-buttons>
+    <ion-title>Home</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="bg-image no-scroll" padding> <!-- Slider Demo, Sample App, home page, display some data and fancy image based on time of day -->
+  <p style="text-align: center;" class="fronttext">  Current time in {{ this.mySelection.kind }} is</p>
+      
+  <p style="text-align: center;" class="watchtext">{{ timeZone() | date: 'H:mm:ss' }}</p>
+
+  <ion-img class="decoimg" width="100" height="100" src={{source()}}></ion-img>
+
+  <ion-item class="roundedlist">
+
+    <ion-select class="selectlist" interface="action-sheet" [(ngModel)]="mySelection.kind" (ionChange)='translateName(myOptions, mySelection.kind)'>
+      <div *ngFor="let item of myOptions">{{item.Name}}</div>
+    </ion-select>
+  </ion-item>
+  
+
+  </ion-content>
